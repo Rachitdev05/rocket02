@@ -7,19 +7,63 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProductDetails, fetchSimilarProducts } from '../../redux/slices/productsSlice';
 import { addToCart } from '../../redux/slices/cartSlice';
 
+{/**const selectedProduct = {
+    name: "Stylish JAcket",
+    price: 120,
+    originalPrice : 150,
+    description: "This is a stylish JAcket perfect for any ocassion",
+    brand:"fashionBrand",
+    material: "Leather",
+    sizes: ["s" , "M" , "L" , "XL"],
+    colors: ["Red" , "Black"],
+    images: [
+        {
+            url: "https://picsum.photos/500/500?random=1",
+            altText: "Stylish jacket 1",
+        },
+        {
+            url: "https://picsum.photos/500/500?random=2",
+            altText: "Stylish jacket 2",
+        },
+    ],
+};
 
-
+const similarProduts =[
+    {
+        _id: 1,
+        name: "Product 1",
+        price: 100,
+        images: [{url: "https://picsum.photos/500/500?random=3" }]
+    },
+    {
+        _id: 2,
+        name: "Product 1",
+        price: 100,
+        images: [{url: "https://picsum.photos/500/500?random=4" }]
+    },
+    {
+        _id: 3,
+        name: "Product 1",
+        price: 100,
+        images: [{url: "https://picsum.photos/500/500?random=5" }]
+    },
+    {
+        _id: 4,
+        name: "Product 1",
+        price: 100,
+        images: [{url: "https://picsum.photos/500/500?random=6" }]
+    },
+]**/}
 
 const ProductDetails = ({ productId}) => {
     const {id} = useParams();
     const dispatch = useDispatch();
-    const {selectedProduct, loading , error , similarProducts} = useSelector(
+    const {selectedProduct , loading , error , similarProduts} = useSelector(
         (state) => state.products
     );
-    const {user, guestId} =useSelector((state) => state.auth);
-
+    const {user , guestId} = useSelector((state) => state.auth);
     const [mainImage , setMainImage] = useState("")
-    const [selectedSize , setSelectedSize] = useState("")
+    const [selectedSize , setSelectedSize] = useState("")   
     const [selectedColor, setSelectedColor] = useState("")
     const [quantity , setQuantity] = useState(1)
     const [IsButtonDisabled , setIsButtonDisabled] = useState(false)
@@ -29,9 +73,10 @@ const ProductDetails = ({ productId}) => {
     useEffect(() => {
         if(productFetchId) {
             dispatch(fetchProductDetails(productFetchId));
-            dispatch(fetchSimilarProducts({id: productFetchId}));
+            dispatch(fetchSimilarProducts({ id: productFetchId }));
         }
     }, [dispatch , productFetchId])
+
 
     useEffect(()=>{
         if(selectedProduct?.images?.length > 0){
@@ -72,19 +117,29 @@ const ProductDetails = ({ productId}) => {
         .finally(() => {
             setIsButtonDisabled(false);
         })
-    };
 
+       {/**  setTimeout(() => {
+            toast.success("Product added to cart!" , {
+                duration: 1000,
+            });
+            setIsButtonDisabled(false);
+        }, 500) */}
+
+       
+    };
     if(loading) {
-        return <p>Loading...</p>
+        return <p>Loading....</p>
     }
-   
+
     if(error) {
         return <p>Error: {error}</p>
     }
 
+   
+   
   return (
     <div className='p-6'>
-        {selectedProduct && (
+        {selectedProduct && ( 
         <div className='max-w-6xl mx-auto bg-white p-8 rounded-lg'>
             <div className='flex flex-col md:flex-row'>
                 {/**Left thumnails */}
@@ -216,9 +271,9 @@ const ProductDetails = ({ productId}) => {
                     <h2 className='text-2xl text-center font-medium mb-4'>
                         You may also like
                     </h2>
-                    <ProductGrid products={similarProducts} loading={loading} error={error}/>
+                    <ProductGrid products={similarProduts} loading={loading} error={error}/>
                 </div> 
-        </div>
+        </div>  
         )}
     </div>
   )

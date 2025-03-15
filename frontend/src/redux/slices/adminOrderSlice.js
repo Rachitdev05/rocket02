@@ -23,7 +23,6 @@ export const fetchAllOrders = createAsyncThunk(
 )
 
 //Update Order Deloivery status
-//Fetch all orders (Admin only)
 export const updateOrderStatus = createAsyncThunk(
     "adminOrders/updateOrderstatus",
     async ({ id, status }, { rejectWithValue }) => {

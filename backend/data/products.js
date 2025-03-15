@@ -1,6 +1,6 @@
 // product.js:
 
-const products = [
+ const products = [
   {
     name: "Classic Oxford Button-Down Shirt",
     description:
@@ -18,11 +18,11 @@ const products = [
     gender:"Men",
     images: [
       {
-        url: "C:\Users\RACHIT CHAUHAN\Downloads\young-casual-woman-style-isolated-white-wall.jpg",
+        url: "https://picsum.photos/500/500?random=39",
         altText: "Classic Oxford Button-Down Shirt Front View",
       },
       {
-        url: "hC:\Users\RACHIT CHAUHAN\Downloads\young-casual-woman-style-isolated-white-wall.jpg",
+        url: "https://picsum.photos/500/500?random=40",
         altText: "Classic Oxford Button-Down Shirt Back View",
       },
     ],

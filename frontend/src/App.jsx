@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter ,Routes, Route, } from 'react-router-dom'
 import UserLayout from './components/Layout/UserLayout'
-import Home from './Pages/Home'
+import Home from './pages/Home'
 import { Toaster} from 'sonner'
 import Login from './pages/Login'
 import Register from './pages/Register'

@@ -11,7 +11,7 @@ const initialGuestId =
     localStorage.getItem("guestId") || `guest_${new Date().getTime()}`;
     localStorage.setItem("guestId", initialGuestId);
 
-//Initial Statae
+//Initial State
 const initialState = {
     user: userFromStorage,
     guestId: initialGuestId,
@@ -52,13 +52,13 @@ const authSlice = createSlice({
     reducers : {
         logout: (state) => {
             state.user = null;
-            state.guestId = `guest_${new Date().getItem()}`; //Reset guest ID on logout
+            state.guestId = `guest_${new Date().getTime()}`; //Reset guest ID on logout
             localStorage.removeItem("userInfo");
             localStorage.removeItem("userToken");
             localStorage.setItem("guestId" , state.guestId); //Set new Guest Id on localStorage
         },
         generateNewGuestId :(state) => {
-            state.guestId =`guest_${new Date().getItem()}`;
+            state.guestId =`guest_${new Date().getTime()}`;
             localStorage.setItem("guestId" , state.guestId)
         },
     },

@@ -237,7 +237,7 @@ router.get("/", async (req, res) => {
         .limit(Number(limit) || 0);
         res.json(products);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).send("server Error");
     }
 })
@@ -272,9 +272,11 @@ router.get("/new-arrivals" , async (req , res) => {
     try {
         //Fetch latest 8 products
         const newArrivals = await Product.find().sort({ createdAt: -1}).limit(8);
-        res.json(newArrivals);
+        console.log(newArrivals);
+        res.json(newArrivals);      
+        console.log(newArrivals);
     } catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).send("Server Error");
         
     }
