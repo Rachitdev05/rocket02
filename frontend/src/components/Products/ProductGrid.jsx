@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const ProductGrid = ({products , loading , error}) => {
+    console.log("products",products)
     if(loading) {
         return <p>Loading...</p>
     }

@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import axios from "axios";  
+// import products from "../../../../backend/data/products";
 
 
 //Async Thunk to Fetch Products by Collection and optional  Filters
@@ -17,21 +18,24 @@ export const fetchProductsByFilters = createAsyncThunk(
         brand,
         limit,
     }) => {
+        console.log("api action 11 ")
         const query = new URLSearchParams();
-        if (collection) query.append("collection", collection);
-        if (size) query.append("size", size);
-        if (color) query.append("color", color);
-        if (gender) query.append("gender", gender);
-        if (minPrice) query.append("minPrice", minPrice);
-        if (maxPrice) query.append("maxPrice", maxPrice);
-        if (sortBy) query.append("sortBy", sortBy);
-        if (search) query.append("search", search);
-        if (category) query.append("category", category);
-        if (material) query.append("material", material);
-        if (brand) query.append("brand", brand);
-        if (limit) query.append("limit", limit);
+        // if (collection) query.append("collection", collection);
+        // if (size) query.append("size", size);
+        // if (color) query.append("color", color);
+        // if (gender) query.append("gender", gender);
+        // if (minPrice) query.append("minPrice", minPrice);
+        // if (maxPrice) query.append("maxPrice", maxPrice);
+        // if (sortBy) query.append("sortBy", sortBy);
+        // if (search) query.append("search", search);
+        // if (category) query.append("category", category);
+        // if (material) query.append("material", material);
+        // if (brand) query.append("brand", brand);
+        // if (limit) query.append("limit", limit);
 
-        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products?${query.toString()}`);
+        // const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products?${query.toString()}/`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/products/`);
+        console.log("api action " , response)
         return response.data;
     }
 )
@@ -114,6 +118,7 @@ const productSlice = createSlice({
             .addCase(fetchProductsByFilters.fulfilled, (state , action) => {
                 state.loading = false;
                 state.products = Array.isArray(action.payload)? action.payload : [];
+                console.log("payloada action" , state.products)
             })
             .addCase(fetchProductsByFilters.rejected , (state ,action) => {
                 state.loading = false;
