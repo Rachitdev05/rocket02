@@ -250,20 +250,21 @@ const ProductDetails = ({ productId}) => {
                     </button>
 
                     <div className='mt-10 text-gray-700'>
-                        <h3 className='text-xl font-bold mb-4'>Characterstics:</h3>
-                        <table className='w-full text-left text-sm text-gray-600'>
-                            <tbody>
-                                <tr>
-                                    <td className='py-1'>Brand</td>
-                                    <tb className='py-1'>{selectedProduct.brand}</tb>
-                                </tr>
-                                <tr>
-                                    <tb className='py-1 '>Material</tb>
-                                     <tb className='py-1'>{selectedProduct.material}</tb>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+    <h3 className='text-xl font-bold mb-4'>Characteristics:</h3>
+    <table className='w-full text-left text-sm text-gray-600'>
+        <tbody>
+            <tr>
+                <td className='py-1'>Brand</td>
+                <td className='py-1'>{selectedProduct.brand}</td>
+            </tr>
+            <tr>
+                <td className='py-1'>Material</td>
+                <td className='py-1'>{selectedProduct.material}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
                 </div>
             </div>
             
